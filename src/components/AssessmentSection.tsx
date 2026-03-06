@@ -100,58 +100,57 @@ export const AssessmentSection: React.FC = () => {
               <motion.div key="form" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="p-8 md:p-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* 左侧：背景信息 */}
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">申请学位</label>
-                      <div className="flex gap-4">
-                        {['bachelor', 'master'].map((type) => (
-                          <button key={type} onClick={() => handleInputChange('degree', type)} className={`flex-1 py-3 px-4 rounded-xl border transition-all ${formData.degree === type ? 'bg-jicai-blue/20 border-jicai-blue text-jicai-blue' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}>
-                            {type === 'bachelor' ? '本科 (Bachelor)' : '硕士 (Master)'}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">平均分 (GPA/100)</label>
-                      <input type="range" min="60" max="100" value={formData.gpa} onChange={(e) => handleInputChange('gpa', parseInt(e.target.value))} className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-jicai-blue" />
-                      <div className="flex justify-between mt-2 text-sm text-gray-500">
-                        <span>60</span><span className="text-jicai-blue font-bold text-lg">{formData.gpa}</span><span>100</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">院校背景</label>
-                      <select value={formData.background} onChange={(e) => handleInputChange('background', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
-                        <option value="985">985 院校</option><option value="211">211 院校</option><option value="tier1">普通一本</option><option value="tier2">二本及其他</option>
-                      </select>
-                    </div>
-                  </div>
+<div className="space-y-6">
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">升学阶段</label>
+    <div className="flex gap-4">
+      {['bachelor', 'master'].map((type) => (
+        <button key={type} onClick={() => handleInputChange('degree', type)} className={`flex-1 py-3 px-4 rounded-xl border transition-all ${formData.degree === type ? 'bg-jicai-blue/20 border-jicai-blue text-jicai-blue' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}>
+          {type === 'bachelor' ? '学部 (本科)' : '大学院 (修士)'}
+        </button>
+      ))}
+    </div>
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">EJU 留考预估总分 (满分800)</label>
+    <input type="range" min="300" max="800" step="10" value={formData.eju} onChange={(e) => handleInputChange('eju', parseInt(e.target.value))} className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-jicai-blue" />
+    <div className="flex justify-between mt-2 text-sm text-gray-500">
+      <span>300</span><span className="text-jicai-blue font-bold text-lg">{formData.eju}</span><span>800</span>
+    </div>
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">日语 JLPT 等级</label>
+    <select value={formData.jlpt} onChange={(e) => handleInputChange('jlpt', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
+      <option value="N1">N1 (精通)</option><option value="N2">N2 (熟练)</option><option value="N3">N3 (日常)</option><option value="other">无 / 其他</option>
+    </select>
+  </div>
+</div>
 
-                  {/* 右侧：意向信息（去掉了原本的手机号填写，让它看起来像个纯粹的工具） */}
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">目标专业</label>
-                      <select value={formData.major} onChange={(e) => handleInputChange('major', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
-                        <option value="机械工程">机械工程</option><option value="计算机">计算机科学</option><option value="电气工程">电气工程</option><option value="商科">商科/管理</option><option value="经济学">经济学</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">语言水平</label>
-                      <select value={formData.language} onChange={(e) => handleInputChange('language', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
-                        <option value="german_c1">德语 TestDaF 4x4 / C1</option><option value="german_b2">德语 B2</option><option value="german_b1">德语 B1</option><option value="ielts_7">雅思 7.0+</option><option value="ielts_6.5">雅思 6.5</option><option value="other">其他 / 暂无</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-400 mb-2">意向城市</label>
-                      <div className="flex flex-wrap gap-2">
-                        {['不限', '慕尼黑', '柏林', '亚琛'].map((city) => (
-                          <button key={city} onClick={() => handleInputChange('city', city)} className={`px-4 py-2 rounded-lg text-sm border transition-all ${formData.city === city ? 'bg-jicai-blue/20 border-jicai-blue text-jicai-blue' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}>
-                            {city}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {/* 右侧：意向信息 */}
+<div className="space-y-6">
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">目标专业大类</label>
+    <select value={formData.major} onChange={(e) => handleInputChange('major', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
+      <option value="文科">文科综合 (社会/文学/教育)</option><option value="经济学">经济 / 经营 / 商学</option><option value="理科">理学 (数理化生)</option><option value="工科">工学 (机械/计算机等)</option><option value="医学">医学 / 药学</option>
+    </select>
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">外语附加项 (极大影响上位校录取)</label>
+    <select value={formData.english} onChange={(e) => handleInputChange('english', e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-jicai-blue transition-colors">
+      <option value="toefl_80">托福 80分以上</option><option value="toeic_700">托业 700分以上</option><option value="none">暂无英语成绩</option>
+    </select>
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-400 mb-2">偏好地区</label>
+    <div className="flex flex-wrap gap-2">
+      {['不限', '东京圈', '关西圈'].map((city) => (
+        <button key={city} onClick={() => handleInputChange('city', city)} className={`px-4 py-2 rounded-lg text-sm border transition-all ${formData.city === city ? 'bg-jicai-blue/20 border-jicai-blue text-jicai-blue' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}>
+          {city}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
                 <div className="mt-10">
                   <button onClick={handleGenerate} disabled={loading} className="w-full bg-jicai-blue hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
