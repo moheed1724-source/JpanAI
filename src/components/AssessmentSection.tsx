@@ -14,11 +14,11 @@ export const AssessmentSection: React.FC = () => {
   const [contactSubmitted, setContactSubmitted] = useState(false);
 
   const [formData, setFormData] = useState<UserInput & { contact: string }>({
-    degree: 'master',
-    gpa: 85,
-    language: 'german_b2',
-    major: '机械工程',
-    background: '211',
+    degree: 'bachelor',
+    eju: 550, // 默认 EJU 550分
+    jlpt: 'N2',
+    english: 'none',
+    major: '经济学',
     city: '不限',
     contact: ''
   });
