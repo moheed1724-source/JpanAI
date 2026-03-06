@@ -59,14 +59,16 @@ export const AssessmentSection: React.FC = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: "a531da67-7614-4c7b-992d-e87c02d63ac2",
-          '联系方式': formData.contact,
-          '申请学位': formData.degree,
-          'GPA': formData.gpa,
-          '院校背景': formData.background,
-          '目标专业': formData.major,
-          '语言水平': formData.language,
-          '意向城市': formData.city
+  access_key: "a531da67-7614-4c7b-992d-e87c02d63ac2", // 保持你的Key不变
+  '提醒': '🔔 收到新的日本留学AI评估留资！',
+  '联系方式': formData.contact,
+  '申请阶段': formData.degree === 'bachelor' ? '考学部' : '考修士',
+  'EJU留考分数': formData.eju,
+  '日语等级': formData.jlpt,
+  '英语成绩': formData.english,
+  '目标专业': formData.major,
+  '偏好地区': formData.city
+})
         })
       });
 
