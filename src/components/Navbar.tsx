@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../logo.png'; // 安全引入 Logo
 
 interface NavbarProps {
   scrollToSection: (id: string) => void;
@@ -19,8 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
          <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
-            {/* 直接读取 public 下的 logo，不会引起 import 报错 */}
-            <img src="/logo.png" alt="济才日本留学 Logo" className="h-8 w-auto object-contain bg-white rounded p-1" />
+            <img src={logoImg} alt="济才日本留学 Logo" className="h-8 w-auto object-contain bg-white rounded p-1" />
             <span className="text-white font-bold text-lg tracking-widest border-l-2 border-jp-red pl-3">济才日本留学</span>
           </div>
           <div className="hidden md:block">
