@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-jicai-dark: #1F2937;
-  --color-jicai-black: #111827;
-  --color-jicai-blue: #2563EB;
-  --color-jicai-white: #FFFFFF;
-  --color-jicai-gray: #F3F4F6;
+  --color-jp-red: #E60012; /* 传统的日本红/鸟居红 */
+  --color-jp-pink: #FFA6C9; /* 樱花粉 */
+  --color-jp-black: #0F0F11; /* 深邃的墨黑 */
+  --color-jp-dark: #1A1A1E; /* 次深色背景 */
+  --color-jp-gray: #27272A; /* 边框与辅助色 */
   
-  --font-sans: "Inter", "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-jp-black);
+  color: white;
 }
