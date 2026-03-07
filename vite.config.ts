@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
-    base: './', // 改为相对路径，防止本地打开白屏
+    base: '/JpanAI/', // 修复 GitHub Pages 白屏的核心！必须匹配仓库名
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
