@@ -60,9 +60,9 @@ export const calculateScore = (input: UserInput): AssessmentResult => {
   }
 
   let suggestion = "";
-  if (input.eju < 500) suggestion = `您的 EJU 预估分目前基础较薄弱。建议加强留考文/理科目的刷题，并重点提升日语听读能力。`;
+  if (input.eju < 500) suggestion = `您的 EJU 预估分基础较薄弱。建议加强留考文/理科目的刷题，并重点提升日语听读能力。`;
   else if (input.jlpt !== 'N1' && input.english === 'none') suggestion = `您的分数有机会冲击 MARCH 级别院校！但由于缺少英语成绩，无法报考上位校，建议突击英语。`;
-  else if (score >= 80) suggestion = `极具竞争力的学术背景！您完全有实力通过校内考冲击帝国大学或早庆上。建议提早准备志望理由书与面试。`;
+  else if (score >= 80) suggestion = `极具竞争力的学术背景！您完全有实力通过校内考冲击帝国大学或早庆上。建议提早准备志望理由书。`;
   else suggestion = `您的背景中规中矩，建议采取“冲刺上位校 + 保底日东驹专”的出愿策略。`;
 
   return { score, predictions: displayPredictions.sort((a, b) => a.probability - b.probability), suggestion };
